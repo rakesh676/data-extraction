@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps Scraper Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="background-mesh"></div>
+    
+    <div class="main-layout">
+        <div class="glass-container sidebar">
+            <header>
+                <h1>Maps Data X-Tractor</h1>
+                <p>Premium Lead Generation System</p>
+            </header>
+
+            <form id="scrapeForm">
+                <div class="input-group">
+                    <label>Select Categories</label>
+                    <div class="multi-select-container">
+                        <div class="tags-input" id="tagsInput">
+                            <input type="text" id="categorySearch" placeholder="Search and add categories..." autocomplete="off">
+                        </div>
+                        <div class="suggestions-dropdown hidden" id="suggestionsBox"></div>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" placeholder="e.g. London, UK" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="max_results">Max Results per Category</label>
+                    <input type="number" id="max_results" value="20" min="1" max="100" required>
+                </div>
+
+                <button type="submit" id="submitBtn">
+                    <span class="btn-text">Start Extraction</span>
+                    <span class="loader hidden"></span>
+                </button>
+            </form>
+
+            <div id="statusArea" class="hidden">
+                <p id="statusMessage">Connecting to extraction server...</p>
+                <div id="resultAction" class="hidden">
+                    <p class="success-text">Extraction Complete! Found <span id="leadCount">0</span> businesses.</p>
+                    <a id="downloadBtn" href="#" class="download-button" download>Download Excel (leads.xlsx)</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="glass-container content-area">
+            <div class="table-header">
+                <h2>Live Data Stream</h2>
+                <div class="pulse-indicator hidden" id="pulseIndicator"></div>
+            </div>
+            <div class="table-responsive">
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Rating</th>
+                            <th>Reviews</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Website</th>
+                            <th>Has Web</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Data rows will be injected here -->
+                    </tbody>
+                </table>
+                <div class="empty-state" id="emptyState">
+                    No data extracted yet. Start a scraping job!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
