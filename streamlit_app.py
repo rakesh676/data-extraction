@@ -29,7 +29,7 @@ with st.sidebar:
     else:
         max_results = 0 # 0 will be interpreted as "All" by our updated scraper
     
-    st.divider()
+    st.markdown("---")
     st.info("💡 **Tip:** To get all results, ensure 'Scrape All' is checked. The scraper will scroll until Google Maps says there's no more data.")
 
 # Initialize session state for results
