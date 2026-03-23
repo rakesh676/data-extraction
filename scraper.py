@@ -2,6 +2,14 @@ from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeo
 from playwright_stealth import stealth
 from utils import logger, random_delay, has_website
 
+import subprocess
+
+subprocess.run(["playwright", "install", "chromium"])
+
+browser = p.chromium.launch(
+    headless=True,
+    args=["--no-sandbox", "--disable-dev-shm-usage"]
+)
 class GoogleMapsScraper:
     def __init__(self, headless=False):
         self.headless = headless
