@@ -1,5 +1,5 @@
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
-from playwright_stealth import stealth
+from playwright_stealth import stealth_sync
 from utils import logger, random_delay, has_website
 
 import subprocess
@@ -29,7 +29,7 @@ class GoogleMapsScraper:
             page = context.new_page()
             
             # Apply anti-bot stealth measures
-            stealth(page)
+            stealth_sync(page)
 
             for category in categories:
                 logger.info(f"--- Starting scrape for '{category}' in '{location}' ---")
